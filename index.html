@@ -1,0 +1,1276 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>地雷チェックシート</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+    }
+
+    .section {
+      border: 1px solid #ccc;
+      margin-bottom: 15px;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    .section summary {
+      background-color: #eee;
+      cursor: pointer;
+      padding: 10px;
+      font-weight: bold;
+    }
+
+    .item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 15px;
+    }
+
+    .red-check {
+      accent-color: #CB0404;
+    }
+
+    .yellow-check {
+      accent-color: #FF9F00;
+    }
+
+    #exportButton, #copyButton {
+      margin-top: 20px;
+      padding: 10px 15px;
+      background-color: #309898;
+      color: white;
+      border: none;
+      cursor: pointer;
+      margin-right: 10px;
+      border-radius:10px;
+    }
+
+    #outputArea {
+      white-space: pre-wrap;
+      margin-top: 20px;
+      border: 1px dashed #ccc;
+      padding: 10px;
+      background-color: #f0f0f0;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>CoC地雷チェックシート</h2>
+    <p>【使用方法】<br>
+    　⒈地雷項目のチェックボックスを選択<br>
+    　⒉「テキストとして出力」ボタンをクリック<br>
+    　⒊「コピーする」ボタンをクリック<br>
+    　⒋外部にペーストで張り付ける<br><br>
+
+    【チェックボックスについて】<br>
+    　赤色：絶対に無理な地雷<br>
+    　黄色：事前連絡がほしい</p>
+
+  <details class="section" open>
+    <summary>描写/展開</summary>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="グロテスクな表現">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="グロテスクな表現">
+      <span>グロテスクな表現</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="グロテスクな音声/画像">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="グロテスクな音声/画像">
+      <span>グロテスクな音声/画像</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="ホラー要素の多い描写">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="ホラー要素の多い描写">
+      <span>ホラー要素の多い描写</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="ホラー要素の多い音声/画像">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="ホラー要素の多い音声/画像">
+      <span>ホラー要素の多い音声/画像</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="びっくり系の演出">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="びっくり系の演出">
+      <span>びっくり系の演出</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="過激ないじめ等の表現">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="過激ないじめ等の表現">
+      <span>過激ないじめ等の表現</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="性行為等の性的描写">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="性行為等の性的描写">
+      <span>性行為等の性的描写</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="痴漢/強姦等の性暴力描写">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="痴漢/強姦等の性暴力描写">
+      <span>痴漢/強姦等の性暴力描写</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="嘔吐/排泄描写">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="嘔吐/排泄描写">
+      <span>嘔吐/排泄描写</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="未成年キャラへの残酷描写">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="未成年キャラへの残酷描写">
+      <span>未成年キャラへの残酷描写</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="未成年キャラの犯罪描写">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="未成年キャラの犯罪描写">
+      <span>未成年キャラの犯罪描写</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="人間以外の動物に対する残酷描写">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="人間以外の動物に対する残酷描写">
+      <span>人間以外の動物に対する残酷描写</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="近親相姦">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="近親相姦">
+      <span>近親相姦</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="妊娠や堕胎">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="妊娠や堕胎">
+      <span>妊娠や堕胎</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="性転換">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="性転換">
+      <span>性転換</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="同性愛">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="同性愛">
+      <span>同性愛</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="下ネタ">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="下ネタ">
+      <span>下ネタ</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="特殊性癖/異常性癖">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="特殊性癖/異常性癖">
+      <span>特殊性癖/異常性癖</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="自殺表現">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="自殺表現">
+      <span>自殺表現</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="薬物">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="薬物">
+      <span>薬物</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="カニバリズム">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="カニバリズム">
+      <span>カニバリズム</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="精神病/発達障害">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="精神病/発達障害">
+      <span>精神病/発達障害</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="実在の病気">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="実在の病気">
+      <span>実在の病気</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="実在の事件">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="実在の事件">
+      <span>実在の事件</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="実在の宗教">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="実在の宗教">
+      <span>実在の宗教</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="実在の人物(偉人等)">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="実在の人物(偉人等)">
+      <span>実在の人物(偉人等)</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="実在の人物(犯罪者等)">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="実在の人物(犯罪者等)">
+      <span>実在の人物(犯罪者等)</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="戦争">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="戦争">
+      <span>戦争</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="自然災害">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="自然災害">
+      <span>自然災害</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="男尊女卑/女尊男卑">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="男尊女卑/女尊男卑">
+      <span>男尊女卑/女尊男卑</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="集合体">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="集合体">
+      <span>集合体</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="昆虫">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="昆虫">
+      <span>昆虫</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="NTR/当て馬系展開">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="NTR/当て馬系展開">
+      <span>NTR/当て馬系展開</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="リアルアイデアが必要">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="リアルアイデアが必要">
+      <span>リアルアイデアが必要</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="リアル知識が必要">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="リアル知識が必要">
+      <span>リアル知識が必要</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="作者の脳内当て">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="作者の脳内当て">
+      <span>作者の脳内当て</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="時間制限">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="時間制限">
+      <span>時間制限</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="PvP">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="PvP">
+      <span>PvP</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="シナリオ独自のルール">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="シナリオ独自のルール">
+      <span>シナリオ独自のルール</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="茶番用イベント">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="茶番用イベント">
+      <span>茶番用イベント</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="設定の矛盾/整合性に欠ける">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="設定の矛盾/整合性に欠ける">
+      <span>設定の矛盾/整合性に欠ける</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="行動理念があやふやな展開">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="行動理念があやふやな展開">
+      <span>行動理念があやふやな展開</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="叙述トリック">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="叙述トリック">
+      <span>叙述トリック</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="極端に描写例が少ない">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="極端に描写例が少ない">
+      <span>極端に描写例が少ない</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="負けイべ">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="負けイべ">
+      <span>負けイべ</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="過度なNPCの活躍">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="過度なNPCの活躍">
+      <span>過度なNPCの活躍</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="演出のための死">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="演出のための死">
+      <span>演出のための死</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="思考実験">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="思考実験">
+      <span>思考実験</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="メアリー・スー">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="メアリー・スー">
+      <span>メアリー・スー</span>
+    </div>
+  </details>
+
+  <!-- セクション2 -->
+  <details class="section">
+    <summary>シナリオ種別</summary>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="ソロシナリオ">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="ソロシナリオ">
+      <span>ソロシナリオ</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="タイマンシナリオ">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="タイマンシナリオ">
+      <span>タイマンシナリオ</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="うちよそシナリオ">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="うちよそシナリオ">
+      <span>うちよそシナリオ</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="大人数シナリオ">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="大人数シナリオ">
+      <span>大人数シナリオ</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="RP重視">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="RP重視">
+      <span>RP重視</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="エモシナリオ">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="エモシナリオ">
+      <span>エモシナリオ</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="戦闘重視">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="戦闘重視">
+      <span>戦闘重視</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="秘匿HO">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="秘匿HO">
+      <span>秘匿HO</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="SAN値回復シナリオ">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="SAN値回復シナリオ">
+      <span>SAN値回復シナリオ</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="思考実験">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="思考実験">
+      <span>思考実験</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="謎解き">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="謎解き">
+      <span>謎解き</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="クラシック">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="クラシック">
+      <span>クラシック</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="恋愛">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="恋愛">
+      <span>恋愛</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="エロシナリオ">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="エロシナリオ">
+      <span>エロシナリオ</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="PvP前提シナリオ">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="PvP前提シナリオ">
+      <span>PvP前提シナリオ</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="ギャグシナリオ">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="ギャグシナリオ">
+      <span>ギャグシナリオ</span>
+    </div>
+  </details>
+
+  <!-- セクション3 -->
+  <details class="section">
+    <summary>ロスト関係</summary>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="PCの確定ロスト">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="PCの確定ロスト">
+      <span>PCの確定ロスト</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="重要NPCの確定ロスト">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="重要NPCの確定ロスト">
+      <span>重要NPCの確定ロスト</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="新規KPCの確定ロスト">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="新規KPCの確定ロスト">
+      <span>新規KPCの確定ロスト</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="継続KPCの確定ロスト">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="継続KPCの確定ロスト">
+      <span>継続KPCの確定ロスト</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="特定のHOのPCが確定ロスト">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="特定のHOのPCが確定ロスト">
+      <span>特定のPCが確定ロスト</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="確定で全生還が不可">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="確定で全生還が不可">
+      <span>確定で全生還不可</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="死亡したPCの蘇り">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="死亡したPCの蘇り">
+      <span>死亡したPCの蘇り</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="死亡したNPCの蘇り">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="死亡したNPCの蘇り">
+      <span>死亡したNPCの蘇り</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="ロストPC限定">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="ロストPC限定">
+      <span>ロストPC限定</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="ロストPC救済">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="ロストPC救済">
+      <span>ロストPC救済</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="永久ロスト">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="永久ロスト">
+      <span>永久ロスト</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="PCに余命付与">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="PCに余命付与">
+      <span>PCに余命付与</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="確定で肉体的後遺症">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="確定で肉体的後遺症">
+      <span>確定で肉体的後遺症</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="実質的なPCの死亡">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="実質的なPCの死亡">
+      <span>実質的なPCの死亡</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="即死トラップ">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="即死トラップ">
+      <span>即死トラップ</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="高ロスト">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="高ロスト">
+      <span>高ロスト</span>
+    </div>
+  </details>
+
+  <!-- セクション4 -->
+  <details class="section">
+    <summary>シナリオ設定・世界観</summary>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="神話的事象の独自解釈">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="神話的事象の独自解釈">
+      <span>神話的事象の独自解釈</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="雑なニャルラトホテプ設定">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="雑なニャルラトホテプ設定">
+      <span>雑なニャルラトホテプ設定</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="極端にクトゥルフ要素が少ない">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="極端にクトゥルフ要素が少ない">
+      <span>極端にクトゥルフ要素が少ない</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="学生/子供PCシナリオ">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="学生/子供PCシナリオ">
+      <span>学生/子供PCシナリオ</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="警察/刑事PCシナリオ">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="警察/刑事PCシナリオ">
+      <span>警察/刑事PCシナリオ</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="ヤクザ/マフィアPCシナリオ">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="ヤクザ/マフィアPCシナリオ">
+      <span>ヤクザ/マフィアPCシナリオ</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="時代物">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="時代物">
+      <span>時代物</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="ホラー/怪談/都市伝説メイン">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="ホラー/怪談/都市伝説メイン">
+      <span>ホラー/怪談/都市伝説メイン</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="クトゥルフ以外の神話モチーフ">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="クトゥルフ以外の神話モチーフ">
+      <span>クトゥルフ以外の神話モチーフ</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="原作準拠設定">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="原作準拠設定">
+      <span>原作準拠設定</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="スチームパンク">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="スチームパンク">
+      <span>スチームパンク</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="SF設定">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="SF設定">
+      <span>SF設定</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="未来/タイムスリップ">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="未来/タイムスリップ">
+      <span>未来/タイムスリップ</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="パラレルワールド">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="パラレルワールド">
+      <span>パラレルワールド</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="ファンタジー">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="ファンタジー">
+      <span>ファンタジー</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="ニチアサ風">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="ニチアサ風">
+      <span>ニチアサ風</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="世界滅亡後">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="世界滅亡後">
+      <span>世界滅亡後</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="幻覚/妄想">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="幻覚/妄想">
+      <span>幻覚/妄想</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="メタフィクション要素">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="メタフィクション要素">
+      <span>未来/タイムスリップ</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="原作/元ネタがある">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="原作/元ネタがある">
+      <span>原作/元ネタがある</span>
+    </div>
+  </details>
+
+  <!-- セクション5 -->
+  <details class="section">
+    <summary>強制されるRP</summary>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="子供RP">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="子供RP">
+      <span>子供RP</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="異性RP">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="異性RP">
+      <span>異性RP</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="感情的になるRP">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="感情的になるRP">
+      <span>感情的になるRP</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="発狂RP">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="発狂RP">
+      <span>発狂RP</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="サイコパスRP">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="サイコパスRP">
+      <span>サイコパスRP</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="暴力/虐待/いじめRP">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="暴力/虐待/いじめRP">
+      <span>暴力/虐待/いじめRP</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="PC/NPCへの説得RP">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="PC/NPCへの説得RP">
+      <span>PC/NPCへの説得RP</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="死ぬ前の別れの言葉RP">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="死ぬ前の別れの言葉RP">
+      <span>死ぬ前の別れの言葉RP</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="エモRP">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="エモRP">
+      <span>エモRP</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="恋愛RP">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="恋愛RP">
+      <span>恋愛RP</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="センシティブRP">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="センシティブRP">
+      <span>センシティブRP</span>
+    </div>
+  </details>
+
+  <!-- セクション6 -->
+  <details class="section">
+    <summary>PCの行動・設定</summary>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="PCに犯罪歴が付く">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="PCに犯罪歴が付く">
+      <span>PCに犯罪歴が付く</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="PCによるいじめ">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="PCによるいじめ">
+      <span>PCによるいじめ</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="PCによる動物虐待">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="PCによる動物虐待">
+      <span>PCによる動物虐待</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="PCによる児童虐待">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="PCによる児童虐待">
+      <span>PCによる児童虐待</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="PCによる性的暴力">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="PCによる性的暴力">
+      <span>PCによる性的暴力</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="PCによる猟奇事件">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="PCによる猟奇事件">
+      <span>PCによる猟奇事件</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="PCが自殺志願者">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="PCが自殺志願者">
+      <span>PCが自殺志願者</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="PCが殺人志願者">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="PCが殺人志願者">
+      <span>PCが殺人志願者</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="PCが拘留される">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="PCが拘留される">
+      <span>PCが拘留される</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="PCがハラスメント行為をする">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="PCがハラスメント行為をする">
+      <span>PCがハラスメント行為をする</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="PCが既に死んでいる">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="PCが既に死んでいる">
+      <span>PCが既に死んでいる</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="PCが人間ではない">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="PCが人間ではない">
+      <span>PCが人間ではない</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="PCが他PCへ粛清する">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="PCが他PCへ粛清する">
+      <span>PCが他PCへ粛清する</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="PCが確定で発狂する">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="PCが確定で発狂する">
+      <span>PCが確定で発狂する</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="PCが自覚のないまま発狂している">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="PCが自覚のないまま発狂している">
+      <span>PCが自覚のないまま発狂している</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="PC間で性的接触がある/あった">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="PC間で性的接触がある/あった">
+      <span>PC間で性的接触がある/あった</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="PC、NPC間で性的接触がある/あった">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="PC、NPC間で性的接触がある/あった">
+      <span>PC、NPC間で性的接触がある/あった</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="異性PCに対して恋愛感情を持つ">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="異性PCに対して恋愛感情を持つ">
+      <span>異性PCに対して恋愛感情を持つ</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="同性NPCに対して恋愛感情を持つ">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="同性NPCに対して恋愛感情を持つ">
+      <span>異性NPCに対して恋愛感情を持つ</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="同性PCに対して恋愛感情を持つ">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="同性PCに対して恋愛感情を持つ">
+      <span>同性PCに対して恋愛感情を持つ</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="同性NPCに対して恋愛感情を持つ">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="同性NPCに対して恋愛感情を持つ">
+      <span>同性NPCに対して恋愛感情を持つ</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="PCがNPCを殺害する">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="PCがNPCを殺害する">
+      <span>PCがNPCを殺害する</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="PCがクローン等、本⼈ではない">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="PCがクローン等、本⼈ではない">
+      <span>PCがクローン等、本⼈ではない</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="PCの行動・感情強制">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="PCの行動・感情強制">
+      <span>PCの行動・感情強制</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="口調や話し方の強制">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="口調や話し方の強制">
+      <span>口調や話し方の強制</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="PCの設定を詳細まで練る必要がある">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="PCの設定を詳細まで練る必要がある">
+      <span>PCの設定を詳細まで練る必要がある</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="ゾーキングが必要">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="ゾーキングが必要">
+      <span>ゾーキングが必要</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="人ができる特殊技能・能力を持つ">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="人ができる特殊技能・能力を持つ">
+      <span>人ができる特殊技能・能力を持つ</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="人ができない特殊技能・能力を持つ">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="人ができない特殊技能・能力を持つ">
+      <span>人ができない特殊技能・能力を持つ</span>
+    </div>
+    <div class="item">
+      <input type="checkbox" class="red-check" data-type="hard" value="回数制限がある能力や技能を持つ">
+      <input type="checkbox" class="yellow-check" data-type="soft" value="回数制限がある能力や技能を持つ">
+      <span>回数制限がある能力や技能を持つ</span>
+    </div>
+  </details>
+
+  <!-- セクション7 -->
+  <details class="section">
+    <summary>PCが受ける行動・設定</summary>
+  <div class="item">
+    <input type="checkbox" class="red-check" data-type="hard" value="PCがいじめを受ける">
+    <input type="checkbox" class="yellow-check" data-type="soft" value="PCがいじめを受ける">
+    <span>PCがいじめを受ける</span>
+  </div>
+  <div class="item">
+    <input type="checkbox" class="red-check" data-type="hard" value="PCが虐待を受ける">
+    <input type="checkbox" class="yellow-check" data-type="soft" value="PCが虐待を受ける">
+    <span>PCが虐待を受ける</span>
+  </div>
+  <div class="item">
+    <input type="checkbox" class="red-check" data-type="hard" value="PCが性的暴力を受ける">
+    <input type="checkbox" class="yellow-check" data-type="soft" value="PCが性的暴力を受ける">
+    <span>PCが性的暴力を受ける</span>
+  </div>
+  <div class="item">
+    <input type="checkbox" class="red-check" data-type="hard" value="PCのペットに対する残虐描写">
+    <input type="checkbox" class="yellow-check" data-type="soft" value="PCのペットに対する残虐描写">
+    <span>PCのペットに対する残虐描写</span>
+  </div>
+  <div class="item">
+    <input type="checkbox" class="red-check" data-type="hard" value="PCの拘留">
+    <input type="checkbox" class="yellow-check" data-type="soft" value="PCの拘留">
+    <span>PCの拘留</span>
+  </div>
+  <div class="item">
+    <input type="checkbox" class="red-check" data-type="hard" value="PCがハラスメント行為を受ける">
+    <input type="checkbox" class="yellow-check" data-type="soft" value="PCがハラスメント行為を受ける">
+    <span>PCがハラスメント行為を受ける</span>
+  </div>
+  <div class="item">
+    <input type="checkbox" class="red-check" data-type="hard" value="PCが他PCから粛清される">
+    <input type="checkbox" class="yellow-check" data-type="soft" value="PCが他PCから粛清される">
+    <span>PCが他PCから粛清される</span>
+  </div>
+  <div class="item">
+    <input type="checkbox" class="red-check" data-type="hard" value="PCが1対多にされるような展開がある">
+    <input type="checkbox" class="yellow-check" data-type="soft" value="PCが1対多にされるような展開がある">
+    <span>PCが1対多にされるような展開がある</span>
+  </div>
+  <div class="item">
+    <input type="checkbox" class="red-check" data-type="hard" value="PCが記憶を失う">
+    <input type="checkbox" class="yellow-check" data-type="soft" value="PCが記憶を失う">
+    <span>PCが記憶を失う</span>
+  </div>
+  <div class="item">
+    <input type="checkbox" class="red-check" data-type="hard" value="異性PCに恋愛感情を持たれる">
+    <input type="checkbox" class="yellow-check" data-type="soft" value="異性PCに恋愛感情を持たれる">
+    <span>異性PCに恋愛感情を持たれる</span>
+  </div>
+  <div class="item">
+    <input type="checkbox" class="red-check" data-type="hard" value="異性NPCに恋愛感情を持たれる">
+    <input type="checkbox" class="yellow-check" data-type="soft" value="異性NPCに恋愛感情を持たれる">
+    <span>異性NPCに恋愛感情を持たれる</span>
+  </div>
+    <div class="item">
+    <input type="checkbox" class="red-check" data-type="hard" value="同性PCに恋愛感情を持たれる">
+    <input type="checkbox" class="yellow-check" data-type="soft" value="同性PCに恋愛感情を持たれる">
+    <span>同性PCに恋愛感情を持たれる</span>
+  </div>
+  <div class="item">
+    <input type="checkbox" class="red-check" data-type="hard" value="同性NPCに恋愛感情を持たれる">
+    <input type="checkbox" class="yellow-check" data-type="soft" value="同性NPCに恋愛感情を持たれる">
+    <span>同性NPCに恋愛感情を持たれる</span>
+  </div>
+  </details>
+
+  <!-- セクション8 -->
+  <details class="section">
+    <summary>ED・分岐</summary>
+  <div class="item">
+    <input type="checkbox" class="red-check" data-type="hard" value="バッドエンド">
+    <input type="checkbox" class="yellow-check" data-type="soft" value="バッドエンド">
+    <span>バッドエンド</span>
+  </div>
+  <div class="item">
+    <input type="checkbox" class="red-check" data-type="hard" value="メリーバッドエンド">
+    <input type="checkbox" class="yellow-check" data-type="soft" value="メリーバッドエンド">
+    <span>メリーバッドエンド</span>
+  </div>
+  <div class="item">
+    <input type="checkbox" class="red-check" data-type="hard" value="マルチバッドエンド">
+    <input type="checkbox" class="yellow-check" data-type="soft" value="マルチバッドエンド">
+    <span>マルチバッドエンド</span>
+  </div>
+  <div class="item">
+    <input type="checkbox" class="red-check" data-type="hard" value="ご都合ハッピーエンド">
+    <input type="checkbox" class="yellow-check" data-type="soft" value="ご都合ハッピーエンド">
+    <span>ご都合ハッピーエンド</span>
+  </div>
+  <div class="item">
+    <input type="checkbox" class="red-check" data-type="hard" value="後味の悪いED">
+    <input type="checkbox" class="yellow-check" data-type="soft" value="後味の悪いED">
+    <span>後味の悪いED</span>
+  </div>
+  <div class="item">
+    <input type="checkbox" class="red-check" data-type="hard" value="1つしかないED">
+    <input type="checkbox" class="yellow-check" data-type="soft" value="1つしかないED">
+    <span>1つしかないED</span>
+  </div>
+  <div class="item">
+    <input type="checkbox" class="red-check" data-type="hard" value="夢オチ">
+    <input type="checkbox" class="yellow-check" data-type="soft" value="夢オチ">
+    <span>夢オチ</span>
+  </div>
+  <div class="item">
+    <input type="checkbox" class="red-check" data-type="hard" value="続編を匂わせるオチ">
+    <input type="checkbox" class="yellow-check" data-type="soft" value="続編を匂わせるオチ">
+    <span>続編を匂わせるオチ</span>
+  </div>
+  <div class="item">
+    <input type="checkbox" class="red-check" data-type="hard" value="メタフィクションが関わるED">
+    <input type="checkbox" class="yellow-check" data-type="soft" value="メタフィクションが関わるED">
+    <span>メタフィクションが関わるED</span>
+  </div>
+  <div class="item">
+    <input type="checkbox" class="red-check" data-type="hard" value="時間遡行">
+    <input type="checkbox" class="yellow-check" data-type="soft" value="時間遡行">
+    <span>時間遡行</span>
+  </div>
+  <div class="item">
+    <input type="checkbox" class="red-check" data-type="hard" value="パラレルワールド/別世界へ行く">
+    <input type="checkbox" class="yellow-check" data-type="soft" value="パラレルワールド/別世界へ行く">
+    <span>パラレルワールド/別世界へ行く</span>
+  </div>
+  <div class="item">
+    <input type="checkbox" class="red-check" data-type="hard" value="PLがエピローグを考える">
+    <input type="checkbox" class="yellow-check" data-type="soft" value="PLがエピローグを考える">
+    <span>PLがエピローグを考える</span>
+  </div>
+  <div class="item">
+    <input type="checkbox" class="red-check" data-type="hard" value="PC/NPCの記憶が消える">
+    <input type="checkbox" class="yellow-check" data-type="soft" value="PC/NPCの記憶が消える">
+    <span>PC/NPCの記憶が消える</span>
+  </div>
+  <div class="item">
+    <input type="checkbox" class="red-check" data-type="hard" value="RP無しで描写のみのED">
+    <input type="checkbox" class="yellow-check" data-type="soft" value="RP無しで描写のみのED">
+    <span>RP無しで描写のみのED</span>
+  </div>
+  <div class="item">
+    <input type="checkbox" class="red-check" data-type="hard" value="極端に描写の少ないED">
+    <input type="checkbox" class="yellow-check" data-type="soft" value="極端に描写の少ないED">
+    <span>極端に描写の少ないED</span>
+  </div>
+  <div class="item">
+    <input type="checkbox" class="red-check" data-type="hard" value="整合性の取れない分岐条件/ED">
+    <input type="checkbox" class="yellow-check" data-type="soft" value="整合性の取れない分岐条件/ED">
+    <span>整合性の取れない分岐条件/ED</span>
+  </div>
+  <div class="item">
+    <input type="checkbox" class="red-check" data-type="hard" value="ポイント制のED分岐">
+    <input type="checkbox" class="yellow-check" data-type="soft" value="ポイント制のED分岐">
+    <span>ポイント制のED分岐</span>
+  </div>
+  <div class="item">
+    <input type="checkbox" class="red-check" data-type="hard" value="複数のダイスロールでのED分岐">
+    <input type="checkbox" class="yellow-check" data-type="soft" value="複数のダイスロールでのED分岐">
+    <span>複数のダイスロールでのED分岐</span>
+  </div>
+  <div class="item">
+    <input type="checkbox" class="red-check" data-type="hard" value="1回のダイスロールでのED分岐">
+    <input type="checkbox" class="yellow-check" data-type="soft" value="1回のダイスロールでのED分岐">
+    <span>1回のダイスロールでのED分岐</span>
+  </div>
+  <div class="item">
+    <input type="checkbox" class="red-check" data-type="hard" value="探索者の決断によるED分岐">
+    <input type="checkbox" class="yellow-check" data-type="soft" value="探索者の決断によるED分岐">
+    <span>探索者の決断によるED分岐</span>
+  </div>
+  <div class="item">
+    <input type="checkbox" class="red-check" data-type="hard" value="KPの裁量による分岐">
+    <input type="checkbox" class="yellow-check" data-type="soft" value="KPの裁量による分岐">
+    <span>KPの裁量による分岐</span>
+  </div>
+  </details>
+
+  <!-- セクション9 -->
+  <details class="section">
+    <summary>秘匿HO内容・処理</summary>
+  <div class="item">
+  <input type="checkbox" class="red-check" data-type="hard" value="PCが記憶喪失">
+  <input type="checkbox" class="yellow-check" data-type="soft" value="PCが記憶喪失">
+  <span>PCが記憶喪失</span>
+</div>
+<div class="item">
+  <input type="checkbox" class="red-check" data-type="hard" value="PCが記憶を改ざんされている/している">
+  <input type="checkbox" class="yellow-check" data-type="soft" value="PCが記憶を改ざんされている/している">
+  <span>PCが記憶を改ざんされている/している</span>
+</div>
+<div class="item">
+  <input type="checkbox" class="red-check" data-type="hard" value="秘匿情報の追加配布">
+  <input type="checkbox" class="yellow-check" data-type="soft" value="秘匿情報の追加配布">
+  <span>秘匿情報の追加配布</span>
+</div>
+<div class="item">
+  <input type="checkbox" class="red-check" data-type="hard" value="最初に配られる秘匿情報がダミー">
+  <input type="checkbox" class="yellow-check" data-type="soft" value="最初に配られる秘匿情報がダミー">
+  <span>最初に配られる秘匿情報がダミー</span>
+</div>
+<div class="item">
+  <input type="checkbox" class="red-check" data-type="hard" value="特定のHOのみ情報量や行動が多い">
+  <input type="checkbox" class="yellow-check" data-type="soft" value="特定のHOのみ情報量や行動が多い">
+  <span>特定のHOのみ情報量や行動が多い</span>
+</div>
+<div class="item">
+  <input type="checkbox" class="red-check" data-type="hard" value="特定のHOの行動が全体のロストやシナリオのED分岐に直結する">
+  <input type="checkbox" class="yellow-check" data-type="soft" value="特定のHOの行動が全体のロストやシナリオのED分岐に直結する">
+  <span>特定のHOの行動が全体のロストやシナリオのED分岐に直結する</span>
+</div>
+<div class="item">
+  <input type="checkbox" class="red-check" data-type="hard" value="PCからPCへの心理学">
+  <input type="checkbox" class="yellow-check" data-type="soft" value="PCからPCへの心理学">
+  <span>PCからPCへの心理学</span>
+</div>
+<div class="item">
+  <input type="checkbox" class="red-check" data-type="hard" value="他PCへの敵意">
+  <input type="checkbox" class="yellow-check" data-type="soft" value="他PCへの敵意">
+  <span>他PCへの敵意</span>
+</div>
+<div class="item">
+  <input type="checkbox" class="red-check" data-type="hard" value="極端に自由度の低いHO">
+  <input type="checkbox" class="yellow-check" data-type="soft" value="極端に自由度の低いHO">
+  <span>極端に自由度の低いHO</span>
+</div>
+<div class="item">
+  <input type="checkbox" class="red-check" data-type="hard" value="全員がほぼ共通の秘匿内容">
+  <input type="checkbox" class="yellow-check" data-type="soft" value="全員がほぼ共通の秘匿内容">
+  <span>全員がほぼ共通の秘匿内容</span>
+</div>
+<div class="item">
+  <input type="checkbox" class="red-check" data-type="hard" value="自分の秘匿内容を事前に把握している別PCが存在する">
+  <input type="checkbox" class="yellow-check" data-type="soft" value="自分の秘匿内容を事前に把握している別PCが存在する">
+  <span>自分の秘匿内容を事前に把握している別PCが存在する</span>
+</div>
+<div class="item">
+  <input type="checkbox" class="red-check" data-type="hard" value="シナリオ中に特殊な能力や技能を使う場面が用意されている">
+  <input type="checkbox" class="yellow-check" data-type="soft" value="シナリオ中に特殊な能力や技能を使う場面が用意されている">
+  <span>シナリオ中に特殊な能力や技能を使う場面が用意されている</span>
+</div>
+<div class="item">
+  <input type="checkbox" class="red-check" data-type="hard" value="秘匿内で性別指定">
+  <input type="checkbox" class="yellow-check" data-type="soft" value="秘匿内性別">
+  <span>秘匿内で性別指定</span>
+</div>
+<div class="item">
+  <input type="checkbox" class="red-check" data-type="hard" value="秘匿内で年齢指定">
+  <input type="checkbox" class="yellow-check" data-type="soft" value="秘匿内で年齢指定">
+  <span>秘匿内で年齢指定</span>
+</div>
+<div class="item">
+  <input type="checkbox" class="red-check" data-type="hard" value="秘匿内で外見指定">
+  <input type="checkbox" class="yellow-check" data-type="soft" value="秘匿内で外見指定">
+  <span>秘匿内で外見指定</span>
+</div>
+<div class="item">
+  <input type="checkbox" class="red-check" data-type="hard" value="秘匿内で性格指定">
+  <input type="checkbox" class="yellow-check" data-type="soft" value="秘匿内で性格指定">
+  <span>秘匿内で性格指定</span>
+</div>
+<div class="item">
+  <input type="checkbox" class="red-check" data-type="hard" value="他PCの秘匿を当てる必要がある">
+  <input type="checkbox" class="yellow-check" data-type="soft" value="他PCの秘匿を当てる必要がある">
+  <span>他PCの秘匿を当てる必要がある</span>
+</div>
+<div class="item">
+  <input type="checkbox" class="red-check" data-type="hard" value="他PCにバレてはいけない秘匿がある">
+  <input type="checkbox" class="yellow-check" data-type="soft" value="他PCにバレてはいけない秘匿がある">
+  <span>他PCにバレてはいけない秘匿がある</span>
+</div>
+<div class="item">
+  <input type="checkbox" class="red-check" data-type="hard" value="秘匿と公言されていないシナリオでの秘匿">
+  <input type="checkbox" class="yellow-check" data-type="soft" value="秘匿と公言されていないシナリオでの秘匿">
+  <span>秘匿と公言されていないシナリオでの秘匿</span>
+</div>
+<div class="item">
+  <input type="checkbox" class="red-check" data-type="hard" value="秘匿と公言されていないシナリオで、PCの中に黒幕が存在">
+  <input type="checkbox" class="yellow-check" data-type="soft" value="秘匿と公言されていないシナリオで、PCの中に黒幕が存在">
+  <span>秘匿と公言されていないシナリオで、PCの中に黒幕が存在</span>
+</div>
+<div class="item">
+  <input type="checkbox" class="red-check" data-type="hard" value="秘匿を公開するタイミングを指定される">
+  <input type="checkbox" class="yellow-check" data-type="soft" value="秘匿を公開するタイミングを指定される">
+  <span>秘匿を公開するタイミングを指定される</span>
+</div>
+  </details>
+
+  <!-- セクション10 -->
+  <details class="section">
+    <summary>秘匿HO内容・処理</summary>
+    <div class="item">
+  <input type="checkbox" class="red-check" data-type="hard" value="セッション録画">
+  <input type="checkbox" class="yellow-check" data-type="soft" value="セッション録画">
+  <span>セッション録画</span>
+</div>
+<div class="item">
+  <input type="checkbox" class="red-check" data-type="hard" value="セッション見学">
+  <input type="checkbox" class="yellow-check" data-type="soft" value="セッション見学">
+  <span>セッション見学</span>
+</div>
+<div class="item">
+  <input type="checkbox" class="red-check" data-type="hard" value="PL発言の多用">
+  <input type="checkbox" class="yellow-check" data-type="soft" value="PL発言の多用">
+  <span>PL発言の多用</span>
+</div>
+<div class="item">
+  <input type="checkbox" class="red-check" data-type="hard" value="同卓者の自己ロスト">
+  <input type="checkbox" class="yellow-check" data-type="soft" value="同卓者の自己ロスト">
+  <span>同卓者の自己ロスト</span>
+</div>
+<div class="item">
+  <input type="checkbox" class="red-check" data-type="hard" value="シナリオ内でPC視点では知っているであろう情報を事前に伝える">
+  <input type="checkbox" class="yellow-check" data-type="soft" value="シナリオ内でPC視点では知っているであろう情報を事前に伝える">
+  <span>シナリオ内でPC視点では知っているであろう情報を事前に伝える</span>
+</div>
+<div class="item">
+  <input type="checkbox" class="red-check" data-type="hard" value="極端にロスト率が上がる能力値/技能値にKPが助言する">
+  <input type="checkbox" class="yellow-check" data-type="soft" value="極端にロスト率が上がる能力値/技能値にKPが助言する">
+  <span>極端にロスト率が上がる能力値/技能値にKPが助言する</span>
+</div>
+<div class="item">
+  <input type="checkbox" class="red-check" data-type="hard" value="公開情報に書かれていない推奨技能/能力値をKPが伝える">
+  <input type="checkbox" class="yellow-check" data-type="soft" value="公開情報に書かれていない推奨技能/能力値をKPが伝える">
+  <span>公開情報に書かれていない推奨技能/能力値をKPが伝える</span>
+</div>
+<div class="item">
+  <input type="checkbox" class="red-check" data-type="hard" value="KP側で難易度を上げる">
+  <input type="checkbox" class="yellow-check" data-type="soft" value="KP側で難易度を上げる">
+  <span>KP側で難易度を上げる</span>
+</div>
+<div class="item">
+  <input type="checkbox" class="red-check" data-type="hard" value="KP側で難易度を下げる">
+  <input type="checkbox" class="yellow-check" data-type="soft" value="KP側で難易度を下げる">
+  <span>KP側で難易度を下げる</span>
+</div>
+<div class="item">
+  <input type="checkbox" class="red-check" data-type="hard" value="KPからRP時間を巻くよう指示する">
+  <input type="checkbox" class="yellow-check" data-type="soft" value="KPからRP時間を巻くよう指示する">
+  <span>KPからRP時間を巻くよう指示する</span>
+</div>
+<div class="item">
+  <input type="checkbox" class="red-check" data-type="hard" value="途中ロストがあるシナリオ">
+  <input type="checkbox" class="yellow-check" data-type="soft" value="途中ロストがあるシナリオ">
+  <span>途中ロストがあるシナリオ</span>
+</div>
+<div class="item">
+  <input type="checkbox" class="red-check" data-type="hard" value="同一シナリオの周回">
+  <input type="checkbox" class="yellow-check" data-type="soft" value="同一シナリオの周回">
+  <span>同一シナリオの周回</span>
+</div>
+<div class="item">
+  <input type="checkbox" class="red-check" data-type="hard" value="二周目PLとの同卓">
+  <input type="checkbox" class="yellow-check" data-type="soft" value="二周目PLとの同卓">
+  <span>二周目PLとの同卓</span>
+</div>
+<div class="item">
+  <input type="checkbox" class="red-check" data-type="hard" value="視聴済みPLとの同卓">
+  <input type="checkbox" class="yellow-check" data-type="soft" value="視聴済みPLとの同卓">
+  <span>視聴済みPLとの同卓</span>
+</div>
+<div class="item">
+  <input type="checkbox" class="red-check" data-type="hard" value="未通過シナリオの継続PLとの同卓">
+  <input type="checkbox" class="yellow-check" data-type="soft" value="未通過シナリオの継続PLとの同卓">
+  <span>未通過シナリオの継続PLとの同卓</span>
+</div>
+<div class="item">
+  <input type="checkbox" class="red-check" data-type="hard" value="KPによるシーンの追加や変更の改変">
+  <input type="checkbox" class="yellow-check" data-type="soft" value="KPによるシーンの追加や変更の改変">
+  <span>KPによるシーンの追加や変更の改変</span>
+</div>
+<div class="item">
+  <input type="checkbox" class="red-check" data-type="hard" value="KPによる根本的な設定の改変">
+  <input type="checkbox" class="yellow-check" data-type="soft" value="KPによる根本的な設定の改変">
+  <span>KPによる根本的な設定の改変</span>
+</div>
+<div class="item">
+  <input type="checkbox" class="red-check" data-type="hard" value="KPによるNPC設定の改変">
+  <input type="checkbox" class="yellow-check" data-type="soft" value="KPによるNPC設定の改変">
+  <span>KPによるNPC設定の改変</span>
+</div>
+<div class="item">
+  <input type="checkbox" class="red-check" data-type="hard" value="KPによる他シナリオのNPCやPCを登場させる改変">
+  <input type="checkbox" class="yellow-check" data-type="soft" value="KPによる他シナリオのNPCやPCを登場させる改変">
+  <span>KPによる他シナリオのNPCやPCを登場させる改変</span>
+</div>
+<div class="item">
+  <input type="checkbox" class="red-check" data-type="hard" value="KPによるエンディングの改変">
+  <input type="checkbox" class="yellow-check" data-type="soft" value="KPによるエンディングの改変">
+  <span>KPによるエンディングの改変</span>
+</div>
+<div class="item">
+  <input type="checkbox" class="red-check" data-type="hard" value="KPの恩情で生かされる">
+  <input type="checkbox" class="yellow-check" data-type="soft" value="KPの恩情で生かされる">
+  <span>KPの恩情で生かされる</span>
+</div>
+<div class="item">
+  <input type="checkbox" class="red-check" data-type="hard" value="地雷回避のため、KPから事前にある程度シナリオの情報を渡す">
+  <input type="checkbox" class="yellow-check" data-type="soft" value="地雷回避のため、KPから事前にある程度シナリオの情報を渡す">
+  <span>地雷回避のため、KPから事前にある程度シナリオの情報を渡す</span>
+</div>
+  </details>
+
+  <!-- ボタン群 -->
+  <button id="exportButton">テキストとして出力</button>
+  <button id="copyButton">コピーする</button>
+
+  <!-- 出力欄 -->
+  <div id="outputArea"></div>
+
+  <!-- スクリプト -->
+  <script>
+    const exportButton = document.getElementById("exportButton");
+    const copyButton = document.getElementById("copyButton");
+    const outputArea = document.getElementById("outputArea");
+
+    exportButton.addEventListener("click", () => {
+      const hardChecks = document.querySelectorAll("input[data-type='hard']:checked");
+      const softChecks = document.querySelectorAll("input[data-type='soft']:checked");
+
+      // 同一項目が両方チェックされていた場合は「hard」を優先
+      const softOnly = Array.from(softChecks).filter(soft => {
+        return !Array.from(hardChecks).some(hard => hard.value === soft.value);
+      });
+
+      const hardList = Array.from(hardChecks).map(cb => `・${cb.value}`);
+      const softList = softOnly.map(cb => `・${cb.value}`);
+
+      let resultText = "";
+      if (hardList.length > 0) {
+        resultText += "【絶対に無理】\n" + hardList.join("\n") + "\n\n";
+      }
+      if (softList.length > 0) {
+        resultText += "【事前連絡が欲しい】\n" + softList.join("\n") + "\n";
+      }
+      if (hardList.length === 0 && softList.length === 0) {
+        resultText = "地雷は選択されていません。";
+      }
+
+      outputArea.textContent = resultText;
+    });
+
+    copyButton.addEventListener("click", () => {
+      const text = outputArea.textContent;
+      if (text.trim() === "") {
+        alert("出力されたテキストがありません。先に『テキストとして出力』を押してください。");
+        return;
+      }
+
+      navigator.clipboard.writeText(text).then(() => {
+        alert("コピーしました！");
+      }).catch(err => {
+        alert("コピーに失敗しました：" + err);
+      });
+    });
+  </script>
+    <br>
+    <p>【参考にさせていただいたもの】<br>
+      細かすぎる地雷チェックシート　https://xpx.booth.pm/items/3432975<br>
+    </p>
+</body>
+</html>
